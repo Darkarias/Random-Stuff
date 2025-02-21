@@ -35,47 +35,6 @@
       margin-bottom: 1.2em;
     }
 
-    /* Input field styling */
-    #nameInput {
-      padding: 10px;
-      font-size: 14px;
-      border: 2px solid #ff69b4;
-      border-radius: 5px;
-      width: 200px;
-      text-align: center;
-      margin-bottom: 1em;
-    }
-
-    /* Dark pink button */
-    #amazingBtn {
-      background-color: #ff69b4; /* Dark pink */
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    #amazingBtn:hover {
-      transform: scale(1.05);
-      background-color: #ff66af;
-    }
-
-    /* Response text */
-    #response {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #ff80b3; /* Lighter pink for contrast on black */
-      min-height: 40px;
-    }
-
-    /* Where we'll insert the GIF for Sophia */
-    #gifContainer {
-      margin-top: 10px;
-    }
-
     /* A little extra positivity at the bottom */
     .kind-note {
       margin-top: 30px;
@@ -105,19 +64,10 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>Hey there!</h1>
-    <p>Enter your name and see if you qualify to press the special button.</p>
-
-    <input type="text" id="nameInput" placeholder="Enter your name here" />
-
-    <br><br>
-
-    <button id="amazingBtn">Only the most amazing person can click this button..</button>
-
-    <p id="response"></p>
-    <!-- We'll insert the GIF here if it's Sophia -->
-    <div id="gifContainer"></div>
+    <p>This page is dedicated to someone truly amazing.</p>
 
     <div class="kind-note">
       Remember: you are awesome—always keep smiling!
@@ -125,45 +75,6 @@
   </div>
 
   <script>
-    // Button logic
-    document.getElementById('amazingBtn').addEventListener('click', function() {
-      const nameInput = document.getElementById('nameInput');
-      const responseEl = document.getElementById('response');
-      const gifContainer = document.getElementById('gifContainer');
-
-      // Clear any previous messages or GIF
-      responseEl.textContent = "";
-      gifContainer.innerHTML = "";
-
-      // Trim and convert to lowercase for case-insensitive comparison
-      const userName = nameInput.value.trim().toLowerCase();
-
-      // Check if name is "sophia"
-      if (userName === 'sophia') {
-        const isSophia = confirm("Is this Sophia?");
-        if (isSophia) {
-          // Show success text
-          responseEl.textContent = "Of course it is, I told you only the most amazing person could click this button";
-          
-          // Create an IMG element for the GIF
-          const gifElement = document.createElement("img");
-          // Use your preferred GIF URL:
-          gifElement.src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmRjdzVtNzExdThzMXpwaHFzNmhzZDl6dW5zcHQ3Zm1wbHRqd2c3YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o75ajIFH0QnQC3nCeD/giphy.gif";
-          gifElement.alt = "Excited reaction GIF";
-          gifElement.style.maxWidth = "100%";
-          gifElement.style.borderRadius = "8px";
-
-          // Insert it below the response text
-          gifContainer.appendChild(gifElement);
-        } else {
-          responseEl.textContent = "Well then why did you assume that you can click the button?";
-        }
-      } else {
-        // If the entered name is not Sophia...
-        responseEl.textContent = "Well then why did you assume that you can click the button?";
-      }
-    });
-
     // Sparkle logic: Create star-shaped sparkles that fall from the top
     function createSparkle() {
       // Create a new 'div' that will hold a star character
