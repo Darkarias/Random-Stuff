@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Only the Most Amazing Person</title>
+  <style>
+    /* Page: Dark gray background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #333; /* Dark gray */
+      color: #fff;      /* White text for contrast */
+      overflow-x: hidden; /* Prevent horizontal scroll if stars fall off screen edges */
+    }
+
+    /* Container for content */
+    .container {
+      margin: 50px auto;
+      max-width: 400px;
+      background-color: rgba(255,255,255,0.1); /* Slightly transparent white */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,105,180,0.2);
+    }
+
+    h1 {
+      margin-bottom: 0.5em;
+      color: #ffc0cb; /* Light pink heading text for fun */
+    }
+
+    p {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+
+    /* A little extra positivity at the bottom */
+    .kind-note {
+      margin-top: 30px;
+      font-style: italic;
+      color: #ffc0cb;
+    }
+
+    /* Sparkle styling */
+    .sparkle {
+      position: fixed;
+      top: -10px;            /* Start just above the top */
+      pointer-events: none;  /* So it doesn't interfere with clicks */
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    /* Keyframes for falling stars */
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(110vh); /* Move them well below the screen */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hey there!</h1>
+    <p>This page is dedicated to someone truly amazing.</p>
+
+    <div class="kind-note">
+      Remember: you are awesome—always keep smiling!
+    </div>
+  </div>
+
+  <script>
+    // Sparkle logic: Create star-shaped sparkles that fall from the top
+    function createSparkle() {
+      // Create a new 'div' that will hold a star character
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      
+      // Use a star-like character (✧, ✦, ✶, ✸, etc.)
+      sparkle.textContent = "✧";
+
+      // Randomize the font size (makes some stars bigger than others)
+      const size = Math.floor(Math.random() * 10) + 15; // 15px to 25px
+      sparkle.style.fontSize = size + 'px';
+      sparkle.style.color = '#fff';   // White star
+
+      // Randomize horizontal position (0% to 100% of viewport width)
+      const leftPosition = Math.random() * 100;
+      sparkle.style.left = leftPosition + 'vw';
+
+      // Randomize the animation duration (2 to 5 seconds)
+      const duration = (Math.random() * 3 + 2).toFixed(2);
+      sparkle.style.animationDuration = duration + 's';
+
+      // Add it to the document body
+      document.body.appendChild(sparkle);
+
+      // Remove sparkle from DOM after it finishes falling
+      setTimeout(() => {
+        document.body.removeChild(sparkle);
+      }, duration * 1000);
+    }
+
+    // Continuously create sparkles
+    setInterval(createSparkle, 300); // Every 300ms spawn a new star
+  </script>
+</body>
+</html>
